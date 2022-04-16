@@ -5,9 +5,9 @@ import theme from '../../../utils/theme';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: theme.defaultBackgroundColor,
-    // borderBottomRightRadius: 10 * vw,
-    // borderTopRightRadius: 10 * vw,
+    backgroundColor: '#707070',
+    borderBottomRightRadius: 10 * vw,
+    borderTopRightRadius: 10 * vw,
   },
   routeContainer: {
     marginTop: 3 * vh,

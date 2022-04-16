@@ -8,6 +8,7 @@ export const useProductsHook = () => {
   const [listProductsState, setListProductsState] = useState();
   const listProductsFunc = useCallback(data => {
     dispatch(getProducts(1)).then(res => {
+      console.log('res',res);
       setListProductsState(res);
     });
   }, []);

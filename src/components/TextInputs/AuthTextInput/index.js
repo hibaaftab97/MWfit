@@ -12,6 +12,7 @@ const AuthTextInput = props => {
       <View style={styles.emailIconView}>
         <Image
           source={
+            props.type === 'difficon'? props.icon :
             props.type === 'password' ? authIcons.password : authIcons.email
           }
           style={[

@@ -142,9 +142,11 @@ const ProductDetailsScreen = props => {
         <View style={styles.productNameView}>
           <TextWrapper numberOfLines={2} style={styles.productNameTextStyle}>
             {productDetails?.name}
+         
           </TextWrapper>
           <TextWrapper style={styles.productPriceTextStyle}>
             ${productDetails?.price}
+          
           </TextWrapper>
         </View>
       </View>
@@ -162,6 +164,16 @@ const ProductDetailsScreen = props => {
             style={styles.cartButton}
           />
         </View>
+        {/* <TextWrapper style={styles.ingredienttext}>
+         
+          INGREDIENTS
+        </TextWrapper>
+        <TextWrapper style={styles.ingredienttext}>
+       
+          INGREDIENTS
+          MORINGA (Moringa oleífera) and NEEM (Azadirachta indica). Ingredients imported from india.
+          Other ingredients: Gelatin
+        </TextWrapper> */}
       </View>
     );
   };
@@ -170,13 +182,23 @@ const ProductDetailsScreen = props => {
     if (!defaultTab) {
       return (
         <>
-          {renderDetailsContent()}
+          
           {/* {renderVariationsButtons()} */}
+          
+          {renderDetailsContent()}
           {renderAddToCart()}
         </>
       );
     } else {
-      return renderReviews();
+      return (
+        <>
+          {renderAddToCart()}
+          {renderReviews()}
+        </>
+      )
+
+
+
     }
   };
 
@@ -267,7 +289,7 @@ const ProductDetailsScreen = props => {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ justifyContent: 'center', alignItems: 'center' }}
         style={styles.mainDescriptionContainer}>
-        <TextWrapper style={styles.descriptionView} numberOfLines={3}>
+           <TextWrapper style={styles.descriptionView} numberOfLines={3}>
           {/* {productDetails?.description} */}
           <RenderHtml
             baseStyle={{ width: 70 * vw }}
@@ -275,6 +297,7 @@ const ProductDetailsScreen = props => {
             source={source}
           />
         </TextWrapper>
+       
       </ScrollView>
     );
   };
@@ -305,7 +328,7 @@ const ProductDetailsScreen = props => {
           title="Add To Cart"
           style={styles.cartButton}
         />
-      </View>
+    </View>
     );
   };
 

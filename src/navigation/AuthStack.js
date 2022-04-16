@@ -11,23 +11,23 @@ function AuthStack() {
   const Stack = createStackNavigator();
   return (
     <Stack.Navigator>
-      <Stack.Screen
+      {/* <Stack.Screen
         options={{headerShown: false}}
         name="WelcomeScreen"
         component={WelcomeScreen}
+      /> */}
+ <Stack.Screen
+        options={{headerShown: false}}
+        name="SignupScreen"
+        component={SignupScreen}
       />
-
       <Stack.Screen
         options={{headerShown: false}}
         name="ForgotPasswordScreen"
         component={ForgotPasswordScreen}
       />
 
-      <Stack.Screen
-        options={{headerShown: false}}
-        name="SignupScreen"
-        component={SignupScreen}
-      />
+     
     </Stack.Navigator>
   );
 }

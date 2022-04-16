@@ -1,11 +1,11 @@
 export const urls = {
-  v1: `https://armarioperfecto.uk//wp-json/wc/v3/`,
-  customUrl: 'https://armarioperfecto.uk/wp-json/api/',
+  v1: `https://testdevlink.com/michaela/wp-json/wc/v3/`,
+  customUrl: 'https://testdevlink.com/michaela/wp-json/api/',
   bannerUrl: 'https://armarioperfecto.uk/wp-json/api/',
 };
 
-export const consumer_secret = 'cs_d7c276c98fc0c58f33966d2a1b131b2213b9ab04';
-export const consumer_key = 'ck_e4f41079f801ca7b905b763829c38695aedf59b8';
+export const consumer_secret = 'cs_4b4a1fd4c1f13fa7ffcaa122ef35bbcc6e0f274d';
+export const consumer_key = 'ck_f77b82afac987ccb0bd57ca7137379a9c59c56d0';
 
 // https://armarioperfecto.uk//wp-json/wc/v3/orders/?consumer_key=ck_e4f41079f801ca7b905b763829c38695aedf59b8&consumer_secret=cs_d7c276c98fc0c58f33966d2a1b131b2213b9ab04
 
@@ -18,8 +18,7 @@ export const endpoints = {
     login: 'login',
     about: 'about_us',
     forgotPasswordMail: 'forgot_password',
-    resetPassword: 'reset_password',
-
+    resetPassword:'reset_password'
   },
 
   products: {

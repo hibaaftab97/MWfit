@@ -15,6 +15,7 @@ import { useProductsHook } from '../../../hooks/useProductsHook';
 import { vh, vw } from '../../../units';
 import { getProducts, getProductsByCategory } from '../../../redux/actions/productsActions';
 import { useDispatch } from 'react-redux';
+import { generalImages } from '../../../assets/images';
 
 const ProductsScreen = props => {
   const [pageNo, setPageNo] = useState(1);
@@ -29,7 +30,44 @@ const ProductsScreen = props => {
     props?.route?.params?.categoryId,
     'ProductsScreenProductsScreen',
   );
+  const recommendedData = [
+    {
+      id: 1,
+      image:generalImages.prod1,
+      price:'19.99',
+      name: 'White Top',
+      
+    },
 
+    {
+      id: 2,
+      image:generalImages.prod1,
+      name: 'White Top',
+      price:'19.99',
+     
+    },
+    {
+      id: 2,
+      image:generalImages.prod1,
+      name: 'White Top',
+      price:'19.99',
+     
+    },
+    {
+      id: 2,
+      image:generalImages.prod1,
+      name: 'White Top',
+      price:'19.99',
+     
+    },
+    {
+      id: 2,
+      image:generalImages.prod1,
+      name: 'White Top',
+      price:'19.99',
+     
+    },
+  ];
   useEffect(() => {
     handleOnGetProducts()
   }, []);
@@ -82,13 +120,14 @@ const ProductsScreen = props => {
       <View style={{ flex: 1 }}>
         <FlatList
           data={products}
+          // data={recommendedData}
           renderItem={renderProductItem}
           initialNumToRender={10}
           numColumns={2}
           keyExtractor={(item, index) => item.id + index + Math.random()}
           style={styles.listView}
           initialNumToRender={10}
-          onEndReached={() => handleOnGetProducts()}
+          // onEndReached={() => handleOnGetProducts()}
           key={'hel'}
         />
       </View>

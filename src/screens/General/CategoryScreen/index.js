@@ -29,8 +29,48 @@ const CategoryScreen = props => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    handleOnGetCategories();
+    // handleOnGetCategories();
   }, []);
+
+  const recommendedData = [
+    {
+      id: 1,
+      image:generalImages.prod1,
+      price:'19.99',
+      name: 'White Top',
+      
+    },
+
+    {
+      id: 2,
+      image:generalImages.prod1,
+      name: 'White Top',
+      price:'19.99',
+     
+    },
+    {
+      id: 2,
+      image:generalImages.prod1,
+      name: 'White Top',
+      price:'19.99',
+     
+    },
+    {
+      id: 2,
+      image:generalImages.prod1,
+      name: 'White Top',
+      price:'19.99',
+     
+    },
+    {
+      id: 2,
+      image:generalImages.prod1,
+      name: 'White Top',
+      price:'19.99',
+     
+    },
+  ];
+
 
   const handleOnGetCategories = () => {
     console.log('handleOnGetCategories categories: ', categories);
@@ -62,15 +102,19 @@ const CategoryScreen = props => {
     };
     return (
       <TouchableOpacity
+        // onPress={() =>
+        //   props.navigation.navigate('ProductsScreen', {
+        //     categoryId: item?.id,
+        //     categoryName: item.name,
+        //   })
+        // }
         onPress={() =>
-          props.navigation.navigate('ProductsScreen', {
-            categoryId: item?.id,
-            categoryName: item.name,
-          })
-        }>
+          props.navigation.navigate('ProductsScreen')
+        }
+        >
         <ImageBackground
-          source={handleCategoriesImages()}
-          // source={generalImages.categoryBackground2}
+          // source={handleCategoriesImages()}
+          source={generalImages.categoryBackground2}
           imageStyle={{}}
           style={styles.imageBackgroundStyle}>
           <LinearGradient
@@ -94,7 +138,8 @@ const CategoryScreen = props => {
     return (
       <View style={styles.flatListView}>
         <FlatList
-          data={categories}
+          // data={categories}
+          data={recommendedData}
           initialNumToRender={10}
           renderItem={renderCategoriesView}
           onEndReached={() => handleOnGetCategories()}

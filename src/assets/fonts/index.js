@@ -5,6 +5,8 @@ module.exports = {
     MD: 'Montserrat-Medium',
     MEB: 'Montserrat-ExtraBold',
     MSB: 'Montserrat-SemiBold',
+    MR: 'Montserrat-Regular',
+    MB: 'Montserrat-Bold',
 
   },
 };

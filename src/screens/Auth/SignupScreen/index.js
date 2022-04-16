@@ -11,11 +11,17 @@ import ButtonTouchableTextButton from '../../../components/Buttons/BottomTouchab
 import { useRegisterHook } from '../../../hooks/useRegisterHook';
 import { useLoginHook } from '../../../hooks/useLoginHook';
 import styles from './styles';
+import { useDispatch } from 'react-redux';
+
 import { useFocusEffect } from '@react-navigation/core';
 import theme from '../../../utils/theme';
+import { userLogin } from '../../../redux/actions/authActions';
+
 import { Fonts } from '../../../assets/fonts';
 
 const SignupScreen = props => {
+  const dispatch = useDispatch();
+
   const [signupState, signupFunc] = useRegisterHook();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -30,9 +36,23 @@ const SignupScreen = props => {
       email: username,
       password: loginPassword,
     };
-    loginFunc(data);
-    setUsername();
-    setLoginPassword();
+    // loginFunc(data);
+    // validateCodeFunc(data);
+    if(data.username!==''&& data.password!==''){
+      dispatch(userLogin(data)).then(response => {
+        console.log('response?.status',response);
+        if (response) {
+          // setVisible(!visible);
+          props.navigation.navigate('DrawerNavigator')
+          setUsername();
+
+          setLoginPassword();
+          
+        }
+      });
+    }
+  
+   
   };
 
 
@@ -44,6 +64,7 @@ const SignupScreen = props => {
       confirmPassword: confirmPassword,
     };
     signupFunc(data);
+
   };
 
   const handleTabs = () => {
@@ -98,7 +119,11 @@ const SignupScreen = props => {
           <TextWrapper style={styles.welcomeBackTextStyle}>
             Create Account
           </TextWrapper>
-
+          <TextWrapper 
+          noOflines={2}
+          style={styles.welcomeDescriptionText}>
+          Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam
+          </TextWrapper>
           <View style={styles.fieldsView}>
             <AuthTextInput
               value={email}
@@ -115,7 +140,7 @@ const SignupScreen = props => {
             <AuthTextInput
               value={confirmPassword}
               onChangeText={text => setConfirmPassword(text)}
-              placeHolder="Enter Your Password"
+              placeHolder="Enter confirm Password"
               type="password"
             />
           </View>
@@ -141,6 +166,11 @@ const SignupScreen = props => {
           {renderTabs()}
           <TextWrapper style={styles.welcomeBackTextStyle}>
             Welcome Back
+          </TextWrapper>
+          <TextWrapper 
+          noOflines={2}
+          style={styles.welcomeDescriptionText}>
+          Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam
           </TextWrapper>
           <View style={styles.fieldsView}>
             <AuthTextInput
@@ -189,7 +219,7 @@ const SignupScreen = props => {
         {/* <SocialButton /> */}
         <ButtonTouchableTextButton
           onPress={handleTabs}
-          headertext="Don't have an account? "
+          headertext="Don't have an Account? "
           type="account"
           title="Sign Up here"
         />

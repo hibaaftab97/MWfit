@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { Fonts } from '../../../assets/fonts';
+import fonts, { Fonts } from '../../../assets/fonts';
 import { vh, vw } from '../../../units/index';
 import theme from '../../../utils/theme';
 
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
 
   searchTextStyle: {
     alignSelf: 'center',
-    fontFamily: Fonts.MSW,
+    fontFamily: Fonts.MB,
     fontSize: 2.8 * vh,
     color: theme.whiteBackground,
     marginRight: 10 * vw,
@@ -98,6 +98,7 @@ const styles = StyleSheet.create({
   textInputStyle: {
     marginLeft: 4 * vw,
     width: 55 * vw,
+    fontFamily:Fonts.MR,
     color: theme.defaultBackgroundColor,
   },
 
@@ -107,19 +108,17 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     borderWidth: 0.5 * vw,
     justifyContent: 'space-between',
-    marginTop: 2 * vh,
+    marginTop: 5 * vh,
   },
 
   checkoutButton: {
-    width: 70 * vw,
-    marginTop: 4 * vh,
-    // width: 100 * vw,
-    // height: 8 * vh,
-    // borderTopRightRadius: 8 * vw,
-    // borderTopLeftRadius: 8 * vw,
-    // backgroundColor: theme.activeTextInputColor,
-    // position: 'absolute',
-    // bottom: 0,
+  
+      width: 100 * vw,
+      height: 8 * vh,
+      borderTopRightRadius: 8 * vw,
+      borderTopLeftRadius: 8 * vw,
+      backgroundColor: theme.activeTextInputColor,
+    
   },
 
   flatListStyle: {
@@ -134,8 +133,8 @@ const styles = StyleSheet.create({
   },
 
   borderLineView: {
-    backgroundColor: 'lightgray',
-    height: 0.2 * vh,
+    backgroundColor: '#DDDDDD',
+    height: 0.1 * vh,
     width: 80 * vw,
     justifyContent: 'center',
     alignItems: 'center',
@@ -180,6 +179,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
+    borderStyle:'dashed',
     backgroundColor: 'lightgray',
   },
 
@@ -195,6 +195,7 @@ const styles = StyleSheet.create({
   subtotalTextStyle: {
     color: 'gray',
     fontSize: 2 * vh,
+    fontFamily:Fonts.MR
   },
 
   totalAmountTextStyle: {
@@ -212,11 +213,12 @@ const styles = StyleSheet.create({
     width: 80 * vw,
     marginTop: 4 * vh,
     alignItems: 'center',
+    marginBottom:4*vh,
     alignSelf: 'center'
   },
 
   totalTextStyle: {
-    fontFamily: Fonts.MSW,
+    fontFamily: Fonts.MB,
     fontSize: 2.2 * vh,
   },
 

@@ -57,7 +57,7 @@ const ContactUsScreen = props => {
                 props.navigation.dispatch(DrawerActions.toggleDrawer())
               }
               style={styles.leftArrowIconButton}>
-              <Image source={icons.drawer} style={styles.leftArrowIconStyle} />
+              <Image source={icons.leftArrow} style={styles.leftArrowIconStyle} />
             </TouchableOpacity>
             <TextWrapper style={styles.welcomeBackTextStyle}>
               Contact Us
@@ -69,6 +69,7 @@ const ContactUsScreen = props => {
               value={fullName}
               onChangeText={text => setFullName(text)}
               placeHolder="Full Name"
+              type="difficon"
               icon={contactIcons.name}
             />
             <AuthTextInput
@@ -78,6 +79,8 @@ const ContactUsScreen = props => {
             />
             <AuthTextInput
               value={subject}
+              type="difficon"
+              icon={contactIcons.subject}
               onChangeText={text => setSubject(text)}
               placeHolder="Subject"
             />

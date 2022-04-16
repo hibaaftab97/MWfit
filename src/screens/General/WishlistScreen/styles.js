@@ -13,15 +13,15 @@ const styles = StyleSheet.create({
 
   searchView: {
     flexDirection: 'row',
-    width: 100 * vw,
+    width: 90 * vw,
     height: 50 * vh,
+   
     justifyContent: 'space-between',
-    resizeMode: 'contain',
-    backgroundColor: theme.defaultBackgroundColor,
+    // backgroundColor: theme.defaultBackgroundColor,
   },
 
   searchIconsView: {
-    flexDirection: 'row',
+    // flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
 
   searchTextStyle: {
     alignSelf: 'center',
-    fontFamily: Fonts.MSW,
+    fontFamily: Fonts.MB,
     fontSize: 2.8 * vh,
     color: theme.whiteBackground,
     marginLeft: 5 * vw,
@@ -62,9 +62,10 @@ const styles = StyleSheet.create({
 
   rowContainer: {
     flexDirection: 'row',
-    width: 90 * vw,
+    width: 80 * vw,
+    
     height: 25 * vh,
-    marginLeft: 5 * vw,
+    // marginLeft: 5 * vw,
   },
 
   listEmptyComponentView: {

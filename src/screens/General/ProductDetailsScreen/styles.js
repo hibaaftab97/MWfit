@@ -1,5 +1,5 @@
 import { Platform, StyleSheet } from 'react-native';
-import { Fonts } from '../../../assets/fonts';
+import fonts, { Fonts } from '../../../assets/fonts';
 import { vh, vw } from '../../../units/index';
 import theme from '../../../utils/theme';
 
@@ -70,7 +70,11 @@ const styles = StyleSheet.create({
     color: theme.whiteBackground,
     fontSize: 2.8 * vh,
   },
-
+  ingredienttext: {
+    color: '#767676',
+    fontFamily:Fonts.MR,
+    fontSize: 2 * vh,
+  },
   productAmountTextStyle: {
     fontFamily: Fonts.SFR,
     fontSize: 2.4 * vh,
@@ -110,6 +114,9 @@ const styles = StyleSheet.create({
   mainDescriptionContainer: {
     marginTop: 4 * vh,
     width: 100 * vw,
+    
+    
+    // height:45*vh
     // justifyContent: 'center',
     // alignItems: 'center',
     // alignSelf: 'center',
@@ -124,6 +131,7 @@ const styles = StyleSheet.create({
 
   descriptionView: {
     color: theme.defaultInactiveBorderColor,
+    width:90*vw,
     fontSize: 1.8 * vh,
   },
 
@@ -139,11 +147,12 @@ const styles = StyleSheet.create({
     height: 8 * vh,
     borderTopRightRadius: 8 * vw,
     borderTopLeftRadius: 8 * vw,
+
     backgroundColor: theme.activeTextInputColor,
   },
 
   amountValueView: {
-    backgroundColor: 'lightgray',
+    backgroundColor: 'rgba(0,0,0,0.06)',
     width: 30 * vw,
     height: 5 * vh,
     flexDirection: 'row',
@@ -206,7 +215,9 @@ const styles = StyleSheet.create({
 
   reviewsContainer: {
     flex: 1,
-    width: 100 * vw,
+    width: 90 * vw,
+    height:45*vh,
+    marginTop:3*vh,
     alignSelf: 'center',
   },
 
@@ -268,6 +279,7 @@ const styles = StyleSheet.create({
 
   reviewsTabTextStyle: {
     fontSize: 1.8 * vh,
+    fontFamily:fonts.Fonts.MSB
   },
 
   variationValueTextStyle: {
@@ -288,6 +300,7 @@ const styles = StyleSheet.create({
   cartButtonView: {
     position: 'absolute',
     bottom: 0,
+    
   },
 
   continueShoppingView: {

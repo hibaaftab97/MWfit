@@ -1,6 +1,7 @@
 export const generalImages = {
   backgroundImage: require('./generalImages/backgroundImage.png'),
   logo: require('./generalImages/logo.png'),
+  prod1: require('./generalImages/prod1.png'),
   welcome1: require('./generalImages/welcome1.png'),
   welcome2: require('./generalImages/welcome2.png'),
   slider: require('./generalImages/slider.png'),

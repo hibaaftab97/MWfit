@@ -20,8 +20,8 @@ const styles = StyleSheet.create({
 
   logoStyle: {
     resizeMode: 'contain',
-    height: 30 * vw,
-    width: 70 * vw,
+    height: 40 * vw,
+    width: 40 * vw,
   },
 
   fieldContainer: {
@@ -39,17 +39,18 @@ const styles = StyleSheet.create({
   },
 
   welcomeDescriptionText: {
-    width: 60 * vw,
-    textAlign: 'center',
-    fontSize: 1.8 * vh,
-    marginTop: 1 * vh,
-    color: theme.defaultAuthDescriptionColor,
+    width: 80 * vw,
+    fontSize:1.7*vh,
+    lineHeight:2.5*vh,
+       marginTop: 1 * vh,
+       color: theme.defaultAuthDescriptionColor,
   },
 
   welcomeBackTextStyle: {
     fontSize: 3 * vh,
+    width:80*vw,
     marginTop: 2.5 * vh,
-    fontFamily: Fonts.MSW,
+    fontFamily: Fonts.MEB,
   },
 
   fieldsView: {
@@ -112,7 +113,7 @@ const styles = StyleSheet.create({
     width: 17 * vw,
     borderRadius: 4 * vw,
     borderColor: 'transparent',
-    backgroundColor: theme.defaultActiveBorderColor,
+    backgroundColor: 'rgba(240,169,213,0.24)',
     height: 0.8 * vh,
     alignSelf: 'center',
     marginTop: 0.5 * vh,
@@ -132,6 +133,7 @@ const styles = StyleSheet.create({
   textStyle: {
     fontSize: 1.8 * vh,
     marginTop: 4 * vh,
+    fontFamily:Fonts.MD,
     width: 80 * vw,
   },
 });

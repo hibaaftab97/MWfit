@@ -5,7 +5,7 @@ import styles from './styles';
 const TextWrapper = props => {
   return (
     <Text
-      numberOfLines={1}
+      numberOfLines={props.noOflines&& props.noOflines}
       ellipsizeMode="tail"
       allowFontScaling={false}
       {...props}

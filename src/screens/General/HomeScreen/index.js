@@ -5,6 +5,7 @@ import {
   Image,
   Dimensions,
   LayoutAnimation,
+  ImageBackground,
 } from 'react-native';
 import ScrollWrapper from '../../../components/Containers/ScrollWrapper';
 import TextWrapper from '../../../components/TextWrapper';
@@ -42,11 +43,65 @@ const HomeScreen = props => {
   const [cartState, addToCartFunc] = useAddToCartHook();
 
 
+  const slider = [
+    {
+      id: 1,
+      image: generalImages.product,
+      description: '100% NATURAL',
+      shortdes: "Products"
+    },
+
+    {
+      id: 2,
+      image: generalImages.product,
+      description: '100% NATURAL',
+      shortdes: "Products"
+    },
+  ];
+
+  const recommendedData = [
+    {
+      id: 1,
+      image: generalImages.prod1,
+      price: '19.99',
+      name: 'White Top',
+
+    },
+
+    {
+      id: 2,
+      image: generalImages.prod1,
+      name: 'White Top',
+      price: '19.99',
+
+    },
+    {
+      id: 2,
+      image: generalImages.prod1,
+      name: 'White Top',
+      price: '19.99',
+
+    },
+    {
+      id: 2,
+      image: generalImages.prod1,
+      name: 'White Top',
+      price: '19.99',
+
+    },
+    {
+      id: 2,
+      image: generalImages.prod1,
+      name: 'White Top',
+      price: '19.99',
+
+    },
+  ];
+
   useEffect(() => {
     listProductsFunc();
     listProductsCategoriesFunc();
     profileFunc(user);
-    homeDataFunc();
   }, []);
 
   const handleAddToCart = item => {
@@ -61,6 +116,7 @@ const HomeScreen = props => {
   };
 
   const handleListProducts = () => {
+    console.log('handleListProducts', listProducts);
     if (listProducts?.length < 3) {
       return listProducts;
     } else {
@@ -162,7 +218,7 @@ const HomeScreen = props => {
       <View style={styles.rowForArivalCategories}>
         <View style={styles.categoriesTextView}>
           <TextWrapper style={styles.categoriesTextStyle}>
-            New Arrivals
+            Our Products
           </TextWrapper>
         </View>
 
@@ -176,12 +232,14 @@ const HomeScreen = props => {
   };
 
   const _renderItem = ({ item, index }) => {
+    
     return (
       <View style={styles.sliderView}>
         <HomeSlider
           onPress={() => props.navigation.navigate('CatgoriesStack')}
           data={item}
         />
+       
       </View>
     );
   };
@@ -189,10 +247,11 @@ const HomeScreen = props => {
   const pagination = () => {
     return (
       <Pagination
-        dotsLength={homeDataState?.length}
+        dotsLength={slider?.length}
         activeDotIndex={activeSlide}
         containerStyle={styles.containerStylePagination}
         dotStyle={styles.dotStylePagination}
+        // style={{backgroundColor:'red'}}
         inactiveDotStyle={styles.inactiveDotStylePagination}
         inactiveDotOpacity={0.4}
         inactiveDotScale={0.6}
@@ -204,16 +263,18 @@ const HomeScreen = props => {
     return (
       <View style={{ height: 50 * vh }}>
         <Carousel
-          data={homeDataState}
+          // data={homeDataState} //comment beta
+          data={slider}
+style={{backgroundColor:'red'}}
           renderItem={_renderItem}
           sliderWidth={windowWidth + 1}
           itemWidth={100 * vw}
           layout="default"
           onSnapToItem={index => setActiveSlide(index)}
-          keyExtractor={(item, index) => item.images + Math.random()}
-        // keyExtractor={(item, index) => item.id + index + Math.random()}
-        // loop={true}
-        // autoplay={true}
+          // keyExtractor={(item, index) => item.images + Math.random()}
+          keyExtractor={(item, index) => item.id + index + Math.random()}
+          loop={true}
+          autoplay={true}
         />
         {pagination()}
       </View>
@@ -232,7 +293,7 @@ const HomeScreen = props => {
 
         <View style={styles.headerContainer}>
           <TextWrapper style={styles.clothingStoreTextStyle}>
-            Clothing Store!
+            MW Fit LLC
           </TextWrapper>
 
           <View style={styles.buttonsView}>
@@ -265,6 +326,53 @@ const HomeScreen = props => {
     );
   };
 
+  // const renderRecommended = ({ item }) => { //beta comment
+  //   const handleProductImage = () => {
+  //     if (item.images[0] == null) {
+  //       return generalImages.placeholderImage;
+  //     } else {
+  //       return { uri: item.images[0].src };
+  //     }
+  //   };
+  //   return (
+  //     <View style={styles.mainProductView}>
+  //       <TouchableOpacity
+  //         style={{
+  //           width: 30 * vw,
+  //         }}
+  //         onPress={() =>
+  //           props.navigation.navigate('ProductDetailsScreen', {
+  //             params: item.id,
+  //           })
+  //         }>
+  //         <Image
+  //           source={handleProductImage()}
+  //           style={styles.productImageStyle}
+  //         />
+  //       </TouchableOpacity>
+
+  //       <View style={styles.cartView}>
+  //         <View style={styles.cartTextView}>
+  //           <TextWrapper style={styles.cartTextStyle}>{item?.name}</TextWrapper>
+  //         </View>
+  //         <TouchableOpacity
+  //           onPress={() => handleAddToCart(item)}
+  //           style={styles.cartGreenView}>
+  //           <Image
+  //             source={icons.cartGreen}
+  //             style={[
+  //               styles.cartGreenStyle,
+  //               { tintColor: theme.defaultBackgroundColor },
+  //             ]}
+  //           />
+  //         </TouchableOpacity>
+  //       </View>
+
+  //       <WishlistContainer data={item} />
+  //     </View>
+  //   );
+  // };
+
   const renderRecommended = ({ item }) => {
     const handleProductImage = () => {
       if (item.images[0] == null) {
@@ -275,15 +383,18 @@ const HomeScreen = props => {
     };
     return (
       <View style={styles.mainProductView}>
+
         <TouchableOpacity
           style={{
             width: 30 * vw,
+            // backgroundColor:'#000000'
           }}
           onPress={() =>
             props.navigation.navigate('ProductDetailsScreen', {
               params: item.id,
             })
-          }>
+          }
+        >
           <Image
             source={handleProductImage()}
             style={styles.productImageStyle}
@@ -317,7 +428,7 @@ const HomeScreen = props => {
     return (
       <View style={styles.recommendedProductsView}>
         <FlatList
-          data={handleListProducts()}
+          data={handleListProducts()} //beta comment
           renderItem={renderRecommended}
           horizontal={true}
           showsHorizontalScrollIndicator={false}
@@ -332,7 +443,8 @@ const HomeScreen = props => {
     return (
       <View style={styles.purchasedProductsView}>
         <FlatList
-          data={handleListProducts()}
+          data={handleListProducts()} //beta comment
+          // data={recommendedData}
           renderItem={renderRecommended}
           horizontal={true}
           showsHorizontalScrollIndicator={false}
@@ -346,8 +458,8 @@ const HomeScreen = props => {
     <ScrollWrapper style={styles.scroll} contentContainerStyle={styles.content}>
       {renderHeader()}
       {renderSlideBanner()}
-      {renderCategoriesRow()}
-      {renderListCategories()}
+      {/* {renderCategoriesRow()}
+      {renderListCategories()} */}
       {renderRecommendedProducts()}
       {renderRecommendedProductsList()}
       {renderMostPurchasedProducts()}

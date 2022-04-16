@@ -40,7 +40,8 @@ const styles = StyleSheet.create({
 
   welcomeDescriptionText: {
     width: 80 * vw,
-    fontSize: 1.8 * vh,
+ fontSize:1.7*vh,
+ lineHeight:2.5*vh,
     marginTop: 1 * vh,
     color: theme.defaultAuthDescriptionColor,
   },
@@ -48,12 +49,18 @@ const styles = StyleSheet.create({
   welcomeBackTextStyle: {
     fontSize: 3 * vh,
     marginTop: 2 * vh,
+    color:theme.defaultBackgroundColor,
     fontFamily: Fonts.MEB,
     width: 80 * vw,
   },
-
-  fieldsView: {
+  welcomedes: {
+    fontSize: 3 * vh,
     marginTop: 2 * vh,
+    fontFamily: Fonts.MR,
+    width: 80 * vw,
+  },
+  fieldsView: {
+    marginTop: 1 * vh,
   },
 
   checkIconStyle: {
@@ -88,9 +95,9 @@ const styles = StyleSheet.create({
   },
 
   forgotPasswordTextStyle: {
-    color: theme.defaultForgotPasswordColor,
+    color: theme.activeTextInputColor,
     fontSize: 1.8 * vh,
-    fontFamily: Fonts.SFR,
+    fontFamily: Fonts.SFD,
   },
 
   submitButtonStyle: {

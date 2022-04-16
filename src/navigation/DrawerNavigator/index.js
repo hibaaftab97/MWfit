@@ -29,7 +29,6 @@ const AnimatedHomeStack = props => {
 const DrawerNavigator = props => {
   const user = useSelector(state => state.authReducer);
 
-  console.log(user, 'drawerUser');
   return (
     <Drawer.Navigator
       drawerContent={props => {
@@ -40,6 +39,7 @@ const DrawerNavigator = props => {
         overlayColor: 'transparent',
         drawerStyle: {
           width: 70 * vw,
+          backgroundColor:'#707070'
         },
         sceneContainerStyle: { backgroundColor: 'black' },
       }}>

@@ -15,6 +15,7 @@ import { DrawerActions, useNavigation } from '@react-navigation/native';
 import { useLogoutHook } from '../../../hooks/useLogoutHook';
 import RemoveProductAlert from '../../Modals/RemoveProductAlert';
 import GeneralAlert from '../../Modals/GeneralAlert';
+import checkoutReducer from '../../../redux/reducers/checkoutReducer';
 
 const routeOrders = [
   'HomeStack',
@@ -63,7 +64,8 @@ const DrawerContent = props => {
   const [visibility, setVisibility] = useState(false);
 
   const handleVisibility = () => {
-    setVisibility(!visibility);
+    props.navigation.navigate('AuthStack')
+    // setVisibility(!visibility);
   };
   const [logoutState, logoutFunc] = useLogoutHook();
   const navigation = useNavigation();
@@ -97,14 +99,27 @@ const DrawerContent = props => {
             style={styles.profileImage}
           />
           <TextWrapper
-            numberOfLines={3}
+            // numberOfLines={3}
             style={{
               color: theme.whiteBackground,
               marginTop: 2 * vh,
-              fontFamily: Fonts.MSW,
+              fontFamily: Fonts.MSB,
             }}
           >
             {user}
+          </TextWrapper>
+          <TextWrapper
+            // numberOfLines={3}
+            style={{
+              color: 'rgba(255,255,255,0.8)',
+              fontSize:2*vh,
+              // marginTop: 1 * vh,
+              fontFamily: Fonts.MR,
+            }}
+          >
+            {user}
+            
+            
           </TextWrapper>
         </View>
       </Animated.View>
@@ -120,8 +135,7 @@ const DrawerContent = props => {
         })}
 
         <AnimatedTouchable
-          // onPress={logoutFunc}
-          onPress={handleVisibility}
+          onPress={logoutFunc}
           style={[styles.logoutButtonStyle]}>
           <Image style={styles.icon} source={sideIcons.logout} />
           <TextWrapper style={styles.label}>Logout</TextWrapper>

@@ -6,7 +6,7 @@ import theme from '../../../utils/theme';
 const styles = StyleSheet.create({
   scroll: {
     flex: 1,
-    backgroundColor: theme.defaultBackgroundColor,
+    backgroundColor:'#707070',
   },
   content: {
     alignItems: 'center',

@@ -16,6 +16,7 @@ import { useFocusEffect } from '@react-navigation/native';
 import ProductsContainer from '../../../components/Containers/ProductsContainer';
 import { vw } from '../../../units';
 import theme from '../../../utils/theme';
+import { generalImages } from '../../../assets/images';
 
 const SearchScreen = props => {
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ const SearchScreen = props => {
   const [minValue, setMinValue] = useState(props?.route?.params?.ranges ? props?.route?.params?.ranges[0] : 1);
   const [maxValue, setMaxValue] = useState(props?.route?.params?.ranges ? props?.route?.params?.ranges[1] : 1000);
 
-
+  
   const [products, setProducts] = useState();
 
   useFocusEffect(

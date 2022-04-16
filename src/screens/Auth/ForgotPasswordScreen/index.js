@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { View, Image, Animated, LayoutAnimation } from 'react-native';
 import { generalImages, icons } from '../../../assets/images/index';
 import MainContainer from '../../../components/Containers/MainContainer';
@@ -8,7 +8,6 @@ import AuthTextInput from '../../../components/TextInputs/AuthTextInput';
 import SubmitButton from '../../../components/Buttons/SubmitButton';
 import ButtonTouchableTextButton from '../../../components/Buttons/BottomTouchableTextButton';
 import styles from './styles';
-import { vh } from '../../../units';
 import GeneralAlert from '../../../components/Modals/GeneralAlert';
 import { useForgotPasswordHook } from '../../../hooks/useForgotPasswordHook';
 import { resetPasswordAction } from '../../../redux/actions/authActions';
@@ -17,10 +16,11 @@ import { useDispatch } from 'react-redux';
 
 const ForgotPasswordScreen = props => {
   const dispatch = useDispatch();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [confirmPassword, setConfirmPassword] = useState();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [verificationCode, setVerificationCode] = useState();
+
   const [step, setStep] = useState(1);
   const [visible, setVisible] = useState(false);
   const [animation, setAnimation] = useState(new Animated.Value(20));
@@ -28,14 +28,31 @@ const ForgotPasswordScreen = props => {
     width: animation,
   };
 
+  const handleModalVisibility = () => {
+    setVisible(false);
+    props.navigation.navigate('LoginScreen');
+  };
+
   const [forgotPasswordEmailState, forgotPasswordEmailFunc] =
     useForgotPasswordHook();
 
   const handleEmail = () => {
-    forgotPasswordEmailFunc(email);
+    forgotPasswordEmailFunc(email)
   };
 
+  console.log(forgotPasswordEmailState, 'forgotPasswordEmailState');
+
+  useEffect(() => {
+
+    if (forgotPasswordEmailState?.status) {
+      handleAnimation()
+    }
+
+
+  }, [forgotPasswordEmailState])
+
   const handleVerification = () => {
+    
     if (verificationCode === forgotPasswordEmailState?.code) {
       setStep(step + 1);
     } else {
@@ -44,44 +61,66 @@ const ForgotPasswordScreen = props => {
   };
 
   const handleResetPassword = () => {
-    if (password === confirmPassword) {
+    try {
       const data = {
         email: email,
         password: password,
       };
+      if (password == '' || confirmPassword == '') {
+        showToast('Fields are empty')
+        return
+      }
+      if (password !== confirmPassword) {
+        showToast('Passwords do not match')
+        return
+      }
       dispatch(resetPasswordAction(data)).then(response => {
         if (response?.status) {
           setVisible(!visible);
         }
       });
-    } else {
-      showToast('Passwords do not match');
+    } catch (error) {
+      showToast(error)
     }
   };
+
+  const handleOnPress = () => {
+    if (step == 1) {
+      handleEmail();
+console.log('hanl,deeee code ',forgotPasswordEmailState);
+      setStep(step + 1);
+      // Animated.timing(animation, {
+      //   toValue: 40,
+      // }).start();
+    }
+    if (step == 2) {
+      handleVerification();
+      // Animated.timing(animation, {
+      //   toValue: 60,
+      // }).start();
+    }
+  }
 
   const handleAnimation = () => {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
     if (step == 1) {
+      // handleEmail();
+
       setStep(step + 1);
-      handleEmail();
       Animated.timing(animation, {
         toValue: 40,
       }).start();
     }
     if (step == 2) {
-      handleVerification();
+      // handleVerification();
       Animated.timing(animation, {
         toValue: 60,
       }).start();
     }
-    // if (step > 2) {
-    //   handleResetPassword();
-    // }
   };
 
   const handleVisibility = () => {
     handleResetPassword();
-    // setVisible(!visible);
   };
 
   const renderLogo = () => {
@@ -125,6 +164,7 @@ const ForgotPasswordScreen = props => {
             value={verificationCode}
             onChangeText={text => setVerificationCode(text)}
             placeHolder="Enter Verification Code"
+            keyboardType='number-pad'
           />
         </View>
       );
@@ -136,13 +176,11 @@ const ForgotPasswordScreen = props => {
             value={password}
             onChangeText={text => setPassword(text)}
             placeHolder="Enter your Password"
-            type="password"
           />
           <AuthTextInput
             value={confirmPassword}
             onChangeText={text => setConfirmPassword(text)}
             placeHolder="Enter confirm Password"
-            type="password"
           />
         </View>
       );
@@ -158,8 +196,9 @@ const ForgotPasswordScreen = props => {
           </TextWrapper>
           {renderStepsLoading()}
           <TextWrapper style={styles.welcomeBackTextStyle}>
-            Forget Password?
+            Forgot Password?
           </TextWrapper>
+
 
           {renderConditionalFields()}
 
@@ -172,7 +211,7 @@ const ForgotPasswordScreen = props => {
             />
           ) : (
             <SubmitButton
-              onPress={handleAnimation}
+              onPress={handleOnPress}
               style={styles.submitButtonStyle}
               titleTextStyle={styles.titleTextStyle}
               title="Continue"
@@ -206,7 +245,11 @@ const ForgotPasswordScreen = props => {
         {renderLogo()}
         {renderFields()}
 
-        <GeneralAlert visibility={visible} />
+        <GeneralAlert
+          onPress={handleModalVisibility}
+          onHide={handleModalVisibility}
+          visibility={visible}
+        />
       </ScrollWrapper>
     </MainContainer>
   );

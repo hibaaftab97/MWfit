@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import { Fonts } from '../../../assets/fonts';
 import {vh, vw} from '../../../units/index';
 // import {Fonts} from '../../../assets/fonts';
 import theme from '../../../utils/theme';
@@ -8,9 +9,9 @@ export default style = StyleSheet.create({
     width: 80 * vw,
     height: 8 * vh,
     borderColor: "rgba(12,13,52,0.08)",
-    borderWidth: 0.2 * vw,
+    borderWidth: 0.3 * vw,
     flexDirection: 'row',
-    borderRadius: 1 * vw,
+    // borderRadius: 1 * vw,
     marginTop: 2 * vh,
   },
 
@@ -18,14 +19,15 @@ export default style = StyleSheet.create({
     width: 80 * vw,
     height: 8 * vh,
     borderColor: theme.activeTextInputColor,
-    borderWidth: 0.1 * vw,
+    borderWidth: 0.3 * vw,
     flexDirection: 'row',
-    borderRadius: 1 * vw,
+    // borderRadius: 1 * vw,
     marginTop: 2 * vh,
   },
 
   textInputStyle: {
     marginLeft: 2 * vw,
+    fontFamily:Fonts.MR,
     color: theme.defaultTextColor,
     width: 66 * vw,
   },

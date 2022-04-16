@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>Armario-Perfecto</string>
+	<string>MW-Fit</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -36,7 +36,7 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string/>
+	<string></string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Khand-Bold.ttf</string>
@@ -48,6 +48,8 @@
 		<string>Montserrat-SemiBold.ttf</string>
 		<string>SFProDisplay-Medium.OTF 01-31-23-794.OTF</string>
 		<string>SFProDisplay-Regular.OTF 01-31-23-782.OTF</string>
+		<string>Montserrat-Regular.ttf</string>
+		<string>Montserrat-Bold.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

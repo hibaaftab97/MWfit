@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { View, TouchableOpacity, Image, FlatList } from 'react-native';
-import { icons } from '../../../assets/images';
+import { generalImages, icons } from '../../../assets/images';
 
 import TextWrapper from '../../../components/TextWrapper';
 
@@ -18,6 +18,7 @@ import { DrawerActions, useNavigation } from '@react-navigation/native';
 
 import ProductsContainer from '../../../components/Containers/ProductsContainer';
 import MainContainer from '../../../components/Containers/MainContainer';
+import theme from '../../../utils/theme';
 
 const WishlistScreen = props => {
   const navigation = useNavigation();
@@ -32,20 +33,24 @@ const WishlistScreen = props => {
       listWishlistProductFunc(wishlistItems);
     }, [wishlistItems]),
   );
-
+  
   const renderSearchHeader = () => {
     return (
+      <View style={{alignItems:'center', backgroundColor: '#707070',}}>
+
+      
       <View
         style={styles.searchView}>
+         
         <View style={styles.rowContainer}>
           <TouchableOpacity
             onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
             style={styles.leftArrowIconButton}>
-            <Image source={icons.drawer} style={styles.leftArrowIconStyle} />
+            <Image source={icons.leftArrow} style={styles.leftArrowIconStyle} />
           </TouchableOpacity>
           <TextWrapper style={styles.searchTextStyle}>WishList</TextWrapper>
-
-          {/* <View style={styles.searchIconsView}>
+          </View>
+          <View style={styles.rowContainer}>
             <TouchableOpacity style={styles.searchIconButtonView}>
               <Image
                 style={[
@@ -55,8 +60,9 @@ const WishlistScreen = props => {
                 source={icons.search}
               />
             </TouchableOpacity>
-          </View> */}
-        </View>
+          </View> 
+         
+      </View>
       </View>
     );
   };

@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
   },
 
   orderAcceptedTextStyle: {
-    fontFamily: Fonts.MSW,
+    fontFamily: Fonts.MEB,
     fontSize: 2.8 * vh,
     marginBottom: 2 * vh,
     marginTop: 2 * vh
@@ -79,6 +79,7 @@ const styles = StyleSheet.create({
 
   orderNumberTextStyle: {
     fontSize: 2 * vh,
+    fontFamily: Fonts.MR,
     color: theme.borderBottomDefaultColor,
     width: 50 * vw,
     textAlign: 'center',

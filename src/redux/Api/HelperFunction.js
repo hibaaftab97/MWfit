@@ -1,8 +1,10 @@
-import {useState} from 'react';
-import {store} from '../store/index';
+import React, { useState } from 'react';
+import { store } from '../store/index';
+import { View, Image, TouchableOpacity } from 'react-native';
+
 // import Toast from 'react-native-toast';
 
-// import Toast, {DURATION} from 'react-native-easy-toast'
+import Toast from 'react-native-simple-toast'
 const TAG = '__API__';
 export const LOG = (label, data) => {
   if (__DEV__) {
@@ -11,19 +13,18 @@ export const LOG = (label, data) => {
 };
 
 export const showToast = msg => {
-  // presentToast(getMessage(msg));
+  console.log('messa',msg);
+  presentToast(getMessage(msg));
+ 
 };
 
-export const showGlobalToast = msg => {};
-// export const presentToast = message => {
-//   console.log('=== in  presentToast ', message);
-//   setTimeout(() => {
-//     Toast.show(message);
-//   }, 500);
-
-//   // EventRegister.emit(events.showToast, getMessage(message))
-// };
-export const handleResponse = ({response, jsonResponse}) => {
+export const showGlobalToast = msg => { };
+export const presentToast = message => {
+ 
+  Toast.show(message);
+  //   // EventRegister.emit(events.showToast, getMessage(message))
+};
+export const handleResponse = ({ response, jsonResponse }) => {
   console.log('response.status : ', response.status);
 
   switch (response.status) {
@@ -70,8 +71,8 @@ export const performNetworkRequest = async (url, configs) => {
     console.log('response', response);
     // log('response', response);
     const jsonResponse = await response.json();
-    console.log('performNetworkRequest response', {jsonResponse, url, configs});
-    return Promise.resolve({response, jsonResponse});
+    console.log('performNetworkRequest response', { jsonResponse, url, configs });
+    return Promise.resolve({ response, jsonResponse });
   } catch (e) {
     log('error', e);
     return Promise.reject(e);
@@ -159,6 +160,7 @@ export const getConfigs = (method, body, formData = true) => {
   };
   if (formData == true) {
     headers['Content-Type'] = 'multipart/form-data';
+    headers['Authorization'] = 'Basic Y2tfZjc3YjgyYWZhYzk4N2NjYjBiZDU3Y2E3MTM3Mzc5YTljNTljNTZkMDpjc180YjRhMWZkNGMxZjEzZmE3ZmZjYWExMjJlZjM1YmJjYzZlMGYyNzRk';
   }
   const data = store.getState();
   console.log(data, 'dataGETCONFIGS');

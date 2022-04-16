@@ -50,7 +50,44 @@ const CheckoutScreen = props => {
 
   const customer = useSelector(state => state.authReducer?.customer);
   const cartItems = useSelector(state => state.cartReducer?.cartItems);
+  const products = [
+    {
+      id: 1,
+      product_image:generalImages.prod1,
+      product_price:'19.99',
+      product_name: 'White Top',
+      
+    },
 
+    {
+      id: 2,
+      product_image:generalImages.prod1,
+      product_name: 'White Top',
+      product_price:'19.99',
+     
+    },
+    {
+      id: 2,
+      product_image:generalImages.prod1,
+      product_name: 'White Top',
+      product_price:'19.99',
+     
+    },
+    {
+      id: 2,
+      product_image:generalImages.prod1,
+      name: 'White Top',
+      price:'19.99',
+     
+    },
+    {
+      id: 2,
+      product_image:generalImages.prod1,
+      name: 'White Top',
+      price:'19.99',
+     
+    },
+  ];
   // console.log(cartItems, 'cartItems');
 
   const [checkoutState, checkoutFunc] = useCheckoutHook();
@@ -100,9 +137,9 @@ const CheckoutScreen = props => {
     // console.log(data, 'checkoutData');
     checkoutFunc(data);
   };
-  // const handlePaymentMethod = () => {
-  //   setPaymentMethod(!paymentMethod);
-  // };
+  const handlePaymentMethod = () => {
+    setPaymentMethod(!paymentMethod);
+  };
 
   const handleDetails = async () => {
     console.log("card complete", card?.complete);
@@ -139,7 +176,7 @@ const CheckoutScreen = props => {
   const goNext = () => {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
     if (step == 2) {
-
+    
       if (paymentMethod) {
         // setStep(2)
         console.log('if step 2,', paymentMethod);
@@ -150,7 +187,7 @@ const CheckoutScreen = props => {
         setStep(step + 1);
       }
     }
-    if (step == 3) {
+    else if (step == 3) {
       setStep(3);
       handleCheckout();
       props.navigation.navigate('OrderAcceptedScreen');
@@ -159,7 +196,7 @@ const CheckoutScreen = props => {
         routes: [{ name: 'OrderAcceptedScreen' }],
       });
     }
-    if (step == 1) {
+    else if (step == 1) {
       if (
         streetAddress1 == '' ||
         city == '' ||
@@ -194,7 +231,7 @@ const CheckoutScreen = props => {
   };
 
   const handleChecked = () => {
-    // setChecked(!checked);
+    setChecked(!checked);
   };
 
   const renderSteps = () => {
@@ -388,7 +425,7 @@ const CheckoutScreen = props => {
 
               <View>
                 <CardField
-                  postalCodeEnabled={true}
+                  // postalCodeEnabled={true}
                   placeholder={{
                     number: '4242 4242 4242 4242',
                   }}
@@ -461,14 +498,14 @@ const CheckoutScreen = props => {
           <TextWrapper style={styles.summaryTextStyle}>Summary</TextWrapper>
           {renderCartItemsList()}
           <View style={styles.mainCardDetailsView}>
-            <View style={styles.shippingAddressHeadingView}>
+            {/* <View style={styles.shippingAddressHeadingView}>
               <TextWrapper style={styles.shippingAddressHeadingTextStyle}>
                 Shipping Price
               </TextWrapper>
               <TextWrapper style={styles.shippingCostTextStyle}>
                 $10.00
               </TextWrapper>
-            </View>
+            </View> */}
 
             <View style={styles.shippingAddressHeadingView}>
               <TextWrapper style={styles.shippingAddressHeadingTextStyle}>
@@ -559,6 +596,7 @@ const CheckoutScreen = props => {
         <FlatList
           horizontal={true}
           data={cartItems}
+          // data={products}
           renderItem={renderCartItem}
           showsHorizontalScrollIndicator={false}
         />

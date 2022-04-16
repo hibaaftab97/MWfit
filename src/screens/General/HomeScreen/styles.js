@@ -16,7 +16,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-
+  welcomeTextStyle:{
+    color: "#707070",
+    fontSize: 2 * vh,
+    fontFamily: Fonts.MR,
+  },
   searchIconStyle: {
     resizeMode: 'contain',
     height: 5 * vh,
@@ -38,7 +42,7 @@ const styles = StyleSheet.create({
   clothingStoreTextStyle: {
     color: theme.defaultTextColor,
     fontSize: 3 * vh,
-    fontFamily: Fonts.MSW,
+    fontFamily: Fonts.MEB,
   },
 
   headerContainer: {
@@ -62,6 +66,7 @@ const styles = StyleSheet.create({
     borderRadius: 2 * vw,
     backgroundColor: theme.defaultForgotPasswordColor,
     borderWidth: 0.5 * vw,
+    
     borderColor: 'transparent',
   },
 
@@ -76,6 +81,7 @@ const styles = StyleSheet.create({
 
   containerStylePagination: {
     bottom: 15 * vh,
+    
   },
 
   rowForCategories: {
@@ -103,7 +109,7 @@ const styles = StyleSheet.create({
   },
 
   categoriesTextStyle: {
-    fontFamily: Fonts.MSW,
+    fontFamily: Fonts.MEB,
     fontSize: 2 * vh,
   },
 
@@ -115,6 +121,7 @@ const styles = StyleSheet.create({
   viewAllTextButtonView: {
     justifyContent: 'center',
     alignItems: 'center',
+    fontFamily:Fonts.MR
   },
 
   viewAllTextButton: {
@@ -240,6 +247,7 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     height: 6 * vh,
     width: 6 * vw,
+    borderRadius:0.5*vh
   },
 
   linearGradient: {

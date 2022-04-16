@@ -48,7 +48,8 @@ const OrderAcceptedScreen = props => {
           </TextWrapper>
 
           <TextWrapper style={styles.orderNumberTextStyle} numberOfLines={2}>
-            Your Order has been placed
+          Your Order No. #123-456
+has been placed
           </TextWrapper>
         </View>
 

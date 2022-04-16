@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   },
 
   billingAlertTextStyle: {
-    fontFamily: Fonts.SFR,
+    fontFamily: Fonts.MR,
     fontSize: 1.7 * vh,
   },
 
@@ -136,13 +136,14 @@ const styles = StyleSheet.create({
 
   amountTextStyle: {
     fontSize: 2 * vh,
-    fontFamily: Fonts.SFD,
-    color: theme.defaultForgotPasswordColor,
+    fontFamily: Fonts.MSB,
+    
+    color: theme.activeTextInputColor,
   },
 
   dressNameStyle: {
     fontSize: 2 * vh,
-    fontFamily: Fonts.SFD,
+    fontFamily: Fonts.MR,
     marginTop: 1.5 * vh,
     width: 30 * vw,
   },
@@ -157,7 +158,7 @@ const styles = StyleSheet.create({
 
   shippingAddressHeadingTextStyle: {
     alignSelf: 'center',
-    fontFamily: Fonts.MSW,
+    fontFamily: Fonts.MSB,
     fontSize: 2 * vh,
   },
 
@@ -170,6 +171,7 @@ const styles = StyleSheet.create({
 
   textDescriptionStyle: {
     color: theme.defaultInactiveBorderColor,
+    fontFamily:Fonts.MR,
     width: 80 * vw,
     fontSize: 2 * vh,
   },
@@ -191,7 +193,7 @@ const styles = StyleSheet.create({
   },
 
   changeTextStyle: {
-    color: theme.defaultForgotPasswordColor,
+    color: theme.activeTextInputColor,
     fontSize: 1.8 * vh,
   },
 
@@ -290,6 +292,9 @@ const styles = StyleSheet.create({
     marginRight: 5 * vw,
     height: 30 * vh,
     borderBottomWidth: 0.5,
+    marginBottom:3*vh,
+    
+
     borderBottomColor: theme.borderBottomDefaultColor,
     width: 80 * vw,
   },

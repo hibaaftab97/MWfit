@@ -21,11 +21,12 @@ import SubmitButton from '../../../components/Buttons/SubmitButton';
 import RemoveProductAlert from '../../../components/Modals/RemoveProductAlert';
 import { FlatList } from 'react-native-gesture-handler';
 
-import { icons } from '../../../assets/images';
+import { generalImages, icons } from '../../../assets/images';
 
 import { useApplyCouponCodeHook } from '../../../hooks/useApplyCouponCodeHook';
 import { showToast } from '../../../redux/Api/HelperFunction';
 import { vh, vw } from '../../../units';
+import { Fonts } from '../../../assets/fonts';
 
 const BasketScreen = props => {
   const [couponState, applyCouponFunc] = useApplyCouponCodeHook();
@@ -42,11 +43,39 @@ const BasketScreen = props => {
     setVisibility(!visibility);
   };
 
+  const recommendedData = [
+    {
+      id: 1,
+      image: generalImages.prod1,
+      product_price: '19.99',
+      product_name: 'White Top',
+
+    },
+
+    {
+      id: 2,
+      image: generalImages.prod1,
+      product_name: 'White Top',
+      product_price: '19.99',
+
+    },
+    {
+      id: 3,
+      image: generalImages.prod1,
+      product_name: 'White Top',
+      product_price: '19.99',
+
+    },
+
+
+  ];
+
   const totalItemsPrice = cartReducer?.cartItems
     .reduce((acc, item) => acc + item.quantity * item.product_price, 0)
     .toFixed(2);
 
   const handleTotalItemsPrice = () => {
+    console.log('couponState',shippingValue);
     if (couponState && Number(couponState?.amount) > Number(totalItemsPrice)) {
       showToast('Please shop more to avail the discount');
       // return totalItemsPrice;
@@ -54,7 +83,12 @@ const BasketScreen = props => {
       return couponState?.amount
         ? Number(totalItemsPrice) - Number(couponState?.amount)
         : Number(totalItemsPrice) + Number(shippingValue);
+
+        return Number(totalItemsPrice) +Number(shippingValue)-Number(couponState?.amount)
+        // ? Number(totalItemsPrice) - Number(couponState?.amount)
+        // : Number(totalItemsPrice) + Number(shippingValue);
     }
+
     return totalItemsPrice;
   };
 
@@ -193,8 +227,9 @@ const BasketScreen = props => {
   const renderCartItemsList = () => {
     return (
       <FlatList
-        style={styles.flatListStyle}
+        // style={styles.flatListStyle}
         data={cartReducer?.cartItems}
+        // data={recommendedData}
         renderItem={renderCartItems}
         ListEmptyComponent={renderEmptyView}
       />
@@ -221,8 +256,9 @@ const BasketScreen = props => {
         />
         <SubmitButton
           onPress={handleVoucher}
+          textStyle={{fontFamily:Fonts.MR}}
           style={styles.applyButtonView}
-          title="APPLY"
+          title="Apply"
         />
       </View>
     );
@@ -246,8 +282,8 @@ const BasketScreen = props => {
 
   const renderMainContainer = () => {
     return (
-      <View style={{ backgroundColor: theme.whiteBackground, height: 100 * vh, width: 100 * vw, borderTopRightRadius: 16 * vw }}>
-        {renderCartItemsList()}
+      <View style={{ backgroundColor: theme.whiteBackground, flex: 1, width: 100 * vw, borderTopRightRadius: 16 * vw }}>
+           {renderCartItemsList()}
         {cartReducer?.cartItems?.length < 1 ? null : renderBorderLine()}
         {cartReducer?.cartItems?.length < 1 ? null : renderSubtotal()}
         {cartReducer?.cartItems?.length < 1 ? null : renderShipping()}
@@ -270,7 +306,38 @@ const BasketScreen = props => {
               title="Proceed To Checkout"
             />
         }
+        {/* {cartReducer?.cartItems?.length < 1 ? null : renderBorderLine()}
+        {cartReducer?.cartItems?.length < 1 ? null : renderSubtotal()}
+        {cartReducer?.cartItems?.length < 1 ? null : renderShipping()}
+        {renderDiscount()}
+        {cartReducer?.cartItems?.length < 1 ? null : renderBorderLine()}
 
+        {cartReducer?.cartItems?.length < 1 ? null : renderVocuherButton()}
+        {cartReducer?.cartItems?.length < 1 ? null : renderTotalAmount()} */}
+        {/* {
+          cartReducer?.cartItems?.length < 1 ? null :
+            <SubmitButton
+              onPress={() =>
+                props.navigation.navigate('CartStack', {
+                  screen: 'CheckoutScreen',
+                  items: cartReducer?.cartItems,params:{
+                  amount: handleTotalItemsPrice().toFixed(2)}
+                })
+              }
+              style={styles.checkoutButton}
+              title="Proceed To Checkout"
+            />
+        } */}
+        {/* <SubmitButton
+          
+          onPress={() =>
+            props.navigation.navigate('CartStack', {
+              screen: 'CheckoutScreen'
+
+          })}
+          style={styles.checkoutButton}
+          title="Proceed To Checkout"
+        /> */}
       </View>
     )
   }

@@ -7,10 +7,13 @@ const styles = StyleSheet.create({
     // zIndex: 999,
     // overflow: 'hidden',
     borderRadius: vh * 2,
+    // backgroundColor:'red'
   },
   outerStyle: {
     flex: 1,
     borderRadius: vh * 2,
+    // opacity:0.5
+    // backgroundColor:'red'
     // elevation: 100,
     // shadowColor: '#000',
     // shadowOffset: {

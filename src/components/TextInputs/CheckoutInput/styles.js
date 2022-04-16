@@ -7,6 +7,7 @@ import theme from '../../../utils/theme';
 export default style = StyleSheet.create({
     titleStyle: {
         color: theme.defaultInactiveBorderColor,
+        fontFamily:Fonts.MR,
         fontSize: 1.8 * vh,
         marginBottom: 1.5 * vh
     },

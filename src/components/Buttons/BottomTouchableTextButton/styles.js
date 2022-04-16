@@ -29,6 +29,6 @@ export default StyleSheet.create({
   backToTextStyle: {
     color: theme.defaultTextColor,
     fontSize: 1.8 * vh,
-    fontFamily: Fonts.SFR,
+    fontFamily: Fonts.MD,
   },
 });

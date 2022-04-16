@@ -39,21 +39,30 @@ const ProductsContainer = props => {
   const renderRecommended = () => {
     return (
       <View style={styles.mainProductView}>
+        <View style={{  width: 40 * vw,
+            opacity:0.8,
+            right: 5 * vw,
+            borderRadius: 4 * vw,
+            backgroundColor:'#000000'}}>
         <TouchableOpacity
           style={{
-            width: 30 * vw,
+          
           }}
           onPress={() =>
             navigation.navigate('ProductDetailsScreen', {
               params: props?.data.id,
             })
-          }>
+          }
+          >
           <Image
             defaultSource={generalImages.placeholderImage}
             source={handleProductImage()}
+            // source={props?.data?.image}
             style={styles.productImageStyle}
           />
         </TouchableOpacity>
+        </View>
+       
 
         <View style={styles.cartView}>
           <View style={styles.cartTextView}>

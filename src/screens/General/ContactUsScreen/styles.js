@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   logoStyle: {
     resizeMode: 'contain',
     height: 30 * vw,
-    width: 70 * vw,
+    width: 30 * vw,
   },
 
   fieldContainer: {
@@ -135,6 +135,7 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     height: 5 * vh,
     width: 5 * vw,
+    tintColor:'#0C0D34'
   },
 
   leftArrowIconButton: {
